@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HealthBot AI – Public Health Chatbot</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#">
+    <div class="nav-logo">
+      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+    </div>
+    <span class="nav-name">HealthBot AI</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#features">Features</a></li>
+    <li><a href="#how">How it Works</a></li>
+    <li><a href="#diseases">Diseases</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+  <div class="nav-cta" id="navCTA">
+    <a class="btn-outline" href="#" onclick="openModal('login')">Sign In</a>
+    <a class="btn-primary" href="#" onclick="openModal('register')">Get Started</a>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-badge">AI-Powered Public Health</div>
+    <h1>Your Trusted <span>Health Information</span> Companion</h1>
+    <p>Get instant, accurate answers about diseases, symptoms, and prevention from our AI-powered chatbot. Designed to improve public health awareness across communities.</p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="#" onclick="openChat()">Chat with HealthBot</a>
+      <a class="btn-outline" href="#how">Learn How It Works</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="chat-card">
+      <div class="chat-header">
+        <div class="chat-avatar">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+        </div>
+        <div class="chat-header-text">
+          <h3>HealthBot AI</h3>
+          <p>Public Health Assistant</p>
+        </div>
+        <div class="online-dot"></div>
+      </div>
+      <div class="chat-body">
+        <div class="msg msg-bot">Hello! I'm HealthBot AI. How can I help you with health information today?</div>
+        <div class="msg msg-user">What are the symptoms of dengue fever?</div>
+        <div class="msg msg-bot">Dengue fever symptoms include high fever (104°F), severe headache, pain behind the eyes, joint and muscle pain, rash, and mild bleeding. Symptoms appear 4–10 days after a mosquito bite. Please consult a doctor if you experience these. 🏥</div>
+        <div class="msg msg-user">How can I prevent it?</div>
+        <div class="msg msg-bot">To prevent dengue: use mosquito repellent, wear full-sleeve clothing, eliminate standing water around your home, and use bed nets. Vaccination is available in some regions. Stay safe! 💙</div>
+      </div>
+      <div class="chat-input-bar">
+        <input type="text" placeholder="Ask a health question…" id="hero-input" onkeydown="if(event.key==='Enter')heroSend()"/>
+        <button class="send-btn" onclick="heroSend()">➤</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat"><div class="stat-num">500+</div><div class="stat-label">Diseases Covered</div></div>
+  <div class="stat"><div class="stat-num">24/7</div><div class="stat-label">Always Available</div></div>
+  <div class="stat"><div class="stat-num">10+</div><div class="stat-label">Languages Supported</div></div>
+  <div class="stat"><div class="stat-num">99.9%</div><div class="stat-label">Uptime Reliability</div></div>
+</div>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+  <div class="section-label">What We Offer</div>
+  <h2 class="section-title">Everything You Need for Health Awareness</h2>
+  <p class="section-sub">From disease information to emergency guidance, HealthBot AI is built to serve the public with reliable, verified health content.</p>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon" style="background:#EBF5FB">🤖</div>
+      <h3>AI-Powered Chat</h3>
+      <p>Ask health questions in plain language and get instant, NLP-driven responses from our trained public health model.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" style="background:#D1F2EB">🦠</div>
+      <h3>Disease Library</h3>
+      <p>Browse detailed information on 500+ diseases including symptoms, causes, risk factors, treatment options, and prevention.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" style="background:#FEF9E7">⚠️</div>
+      <h3>Real-Time Alerts</h3>
+      <p>Receive disease outbreak alerts and public health advisories relevant to your region in real time.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" style="background:#FDEDEC">🚨</div>
+      <h3>Emergency Guidance</h3>
+      <p>Get first-aid steps and emergency contact information when every second counts.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" style="background:#EBF5FB">💉</div>
+      <h3>Vaccination Info</h3>
+      <p>Access up-to-date vaccination schedules, recommendations, and nearby immunisation centre locators.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" style="background:#D1F2EB">🌐</div>
+      <h3>Multilingual Support</h3>
+      <p>Use HealthBot in your preferred language. We support English, Hindi, Tamil, and more regional languages.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="section-label">Simple Process</div>
+  <h2 class="section-title">How HealthBot AI Works</h2>
+  <p class="section-sub">From your question to a verified health answer in seconds.</p>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h4>Ask a Question</h4>
+      <p>Type your health concern in natural language — no medical jargon needed.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h4>AI Processes It</h4>
+      <p>Our NLP model understands your query and searches verified medical databases.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h4>Get an Answer</h4>
+      <p>Receive a clear, accurate response with source references within seconds.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <h4>Take Action</h4>
+      <p>Follow prevention tips, find nearby clinics, or consult a professional if needed.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DISEASES -->
+<section class="diseases" id="diseases">
+  <div class="section-label">Disease Coverage</div>
+  <h2 class="section-title">Search Across 500+ Conditions</h2>
+  <p class="section-sub">From common illnesses to seasonal outbreaks, our database is continuously updated with verified medical information.</p>
+  <div class="disease-chips">
+    <span class="chip active">Dengue Fever</span>
+    <span class="chip">COVID-19</span>
+    <span class="chip">Malaria</span>
+    <span class="chip">Tuberculosis</span>
+    <span class="chip">Typhoid</span>
+    <span class="chip">Cholera</span>
+    <span class="chip">Diabetes</span>
+    <span class="chip">Hypertension</span>
+    <span class="chip">Influenza</span>
+    <span class="chip">Chickenpox</span>
+    <span class="chip">Hepatitis B</span>
+    <span class="chip">Pneumonia</span>
+    <span class="chip">Asthma</span>
+    <span class="chip">Leptospirosis</span>
+    <span class="chip">Japanese Encephalitis</span>
+    <span class="chip">Rabies</span>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>Start Your Health Journey Today</h2>
+  <p>Join thousands of users making informed health decisions with HealthBot AI. Free to use, always available.</p>
+  <a class="btn-white" href="#" onclick="openModal('register')">Create Free Account</a>
+</section>
+
+<!-- FOOTER -->
+<footer id="about">
+  <div class="disclaimer">
+    <span>⚕️ Medical Disclaimer:</span> HealthBot AI provides general health information for educational purposes only. It does not replace professional medical advice, diagnosis, or treatment. Always consult a qualified healthcare professional for medical concerns.
+  </div>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="nav-brand" style="margin-bottom:0">
+        <div class="nav-logo"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg></div>
+        <span class="nav-name" style="color:white">HealthBot AI</span>
+      </div>
+      <p>An AI-driven public health chatbot providing disease awareness, prevention guidance, and health information to communities worldwide.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Features</h4>
+      <ul>
+        <li><a href="#">Disease Library</a></li>
+        <li><a href="#">AI Chatbot</a></li>
+        <li><a href="#">Health Alerts</a></li>
+        <li><a href="#">Symptom Checker</a></li>
+        <li><a href="#">Vaccination Info</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="#">WHO Guidelines</a></li>
+        <li><a href="#">Health Articles</a></li>
+        <li><a href="#">FAQs</a></li>
+        <li><a href="#">Emergency Contacts</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Use</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 HealthBot AI. All rights reserved.</p>
+    <p>Data sourced from WHO, CDC, ICMR & verified medical databases.</p>
+  </div>
+</footer>
+
+<!-- LOGIN MODAL -->
+<div class="modal-overlay" id="loginModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Sign In to HealthBot AI</h3>
+      <button class="modal-close" onclick="closeModal('login')">×</button>
+    </div>
+
+    <div class="modal-body">
+
+      <div class="form-group">
+        <label>Email Address</label>
+        <input
+            type="email"
+            id="loginEmail"
+            placeholder="you@example.com">
+      </div>
+
+      <div class="form-group">
+        <label>Password</label>
+        <input
+            type="password"
+            id="loginPassword"
+            placeholder="Enter your password">
+      </div>
+
+      <button class="form-submit" onclick="loginUser()">
+        Sign In
+      </button>
+
+      <div class="form-footer">
+        Don't have an account?
+        <a href="#" onclick="switchModal('login','register')">
+          Register here
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- REGISTER MODAL -->
+<div class="modal-overlay" id="registerModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Create Your Account</h3>
+      <button class="modal-close" onclick="closeModal('register')">×</button>
+    </div>
+
+    <div class="modal-body">
+
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" id="regName" placeholder="Your full name">
+      </div>
+
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" id="regEmail" placeholder="you@example.com">
+      </div>
+
+      <div class="form-group">
+        <label>Role</label>
+        <select id="regRole">
+          <option>General Public</option>
+          <option>Healthcare Professional</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" id="regPassword" placeholder="Minimum 8 characters">
+      </div>
+
+      <button class="form-submit" onclick="registerUser()">
+        Create Account
+      </button>
+
+      <div class="form-footer">
+        Already have an account?
+        <a href="#" onclick="switchModal('register','login')">Sign in</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- CHATBOT POPUP -->
+<button class="chatbot-fab" onclick="openChat()">
+  <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
+</button>
+
+
+  <div class="chatbot-popup" id="chatPopup">
+
+    <div class="cp-header">
+
+        <div class="chat-avatar" style="width:30px;height:30px">
+            <svg viewBox="0 0 24 24">
+                <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+            </svg>
+        </div>
+
+        <h3>HealthBot AI</h3>
+
+        <div class="header-buttons">
+            <button id="themeToggle"
+                    onclick="toggleTheme()"
+                    title="Toggle Dark Mode">
+                🌙
+            </button>
+
+            <button class="cp-close"
+                    onclick="closeChat()">
+                ×
+            </button>
+        </div>
+    
+    </div>
+
+    
+ <div class="cp-messages" id="cpMessages">
+    <div class="msg msg-bot" style="max-width:90%">
+        Hi! 👋 I'm HealthBot AI. Ask me anything about diseases, symptoms, or prevention.
+    </div>
+</div>
+
+<!-- Quick Question Buttons -->
+<div class="quick-questions">
+    <button onclick="quickAsk('What is dengue?')">🦟 Dengue</button>
+    <button onclick="quickAsk('What are the symptoms of malaria?')">🤒 Symptoms</button>
+    <button onclick="quickAsk('How can I prevent diseases?')">🛡 Prevention</button>
+    <button onclick="quickAsk('What vaccines are recommended?')">💉 Vaccination</button>
+</div>
+
+<div class="cp-input-row">
+    <input
+    id="cpInput"
+    onkeydown="if(event.key==='Enter'){event.preventDefault(); sendChat();}">
+    <button type="button" onclick="sendChat()">
+    Send
+</button>
+</div>
+</div>
+
+<div class="modal-overlay" id="profileModal">
+
+    <div class="modal">
+
+        <div class="modal-header">
+
+            <h3>My Profile</h3>
+
+            <button class="modal-close"
+                    onclick="closeModal('profile')">
+                ×
+            </button>
+
+        </div>
+
+        <div class="modal-body">
+
+            <p><strong>Name:</strong>
+                <span id="profileName"></span>
+            </p>
+
+            <p><strong>Email:</strong>
+                <span id="profileEmail"></span>
+            </p>
+
+            <br>
+
+            <button class="form-submit"
+                    onclick="logoutUser()">
+                Logout
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+<script src="js/script.js"></script>
+</body>
+</html>
