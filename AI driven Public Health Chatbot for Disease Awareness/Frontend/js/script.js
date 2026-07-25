@@ -58,13 +58,18 @@
   }
 
   function addMessage(container, text, isUser) {
-    const div = document.createElement('div');
-    div.className = 'msg ' + (isUser ? 'msg-user' : 'msg-bot');
-    div.style.maxWidth = '90%';
-    div.textContent = text;
+    const div = document.createElement("div");
+    div.className = "msg " + (isUser ? "msg-user" : "msg-bot");
+
+    if (isUser) {
+        div.textContent = text;
+    } else {
+        div.innerHTML = marked.parse(text);
+    }
+
     container.appendChild(div);
     container.scrollTop = container.scrollHeight;
-  }
+}
 
  async function sendChat() {
 

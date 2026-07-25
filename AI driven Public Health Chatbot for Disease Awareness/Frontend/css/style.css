@@ -401,3 +401,33 @@
     background:#2563eb;
     border-color:#2563eb;
 }
+.msg-bot h2{
+    color:#0f766e;
+    margin:10px 0;
+    font-size:20px;
+}
+
+.msg-bot h3{
+    color:#2563eb;
+    margin-top:15px;
+    font-size:17px;
+}
+
+.msg-bot ul{
+    margin-left:20px;
+    padding-left:10px;
+}
+
+.msg-bot li{
+    margin:8px 0;
+    line-height:1.6;
+}
+
+.msg-bot p{
+    line-height:1.7;
+    margin:10px 0;
+}
+
+.msg-bot strong{
+    color:#111827;
+}
