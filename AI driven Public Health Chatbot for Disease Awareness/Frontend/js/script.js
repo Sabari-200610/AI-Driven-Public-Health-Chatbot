@@ -391,3 +391,20 @@ function openProfile(){
     openModal("profile");
 
 }
+function toggleExpand(){
+
+    const popup = document.getElementById("chatPopup");
+
+    const btn = document.getElementById("expandChat");
+
+    popup.classList.toggle("expanded");
+
+    if(popup.classList.contains("expanded")){
+        btn.innerHTML="🗗";
+        btn.title="Restore Size";
+    }else{
+        btn.innerHTML="⛶";
+        btn.title="Expand Chat";
+    }
+
+}

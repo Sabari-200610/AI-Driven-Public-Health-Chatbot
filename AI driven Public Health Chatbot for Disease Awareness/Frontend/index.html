@@ -329,20 +329,23 @@
         <h3>HealthBot AI</h3>
 
         <div class="header-buttons">
-            <button id="themeToggle"
-                    onclick="toggleTheme()"
-                    title="Toggle Dark Mode">
-                🌙
-            </button>
 
-            <button class="cp-close"
-                    onclick="closeChat()">
-                ×
-            </button>
-        </div>
-    
-    </div>
+    <button id="expandChat"
+            onclick="toggleExpand()"
+            title="Expand Chat">
+        ⛶
+    </button>
 
+    <button id="themeToggle" onclick="toggleTheme()">
+        🌙
+    </button>
+
+    <button class="cp-close" onclick="closeChat()">
+        ×
+    </button>
+
+</div>
+</div>
     
  <div class="cp-messages" id="cpMessages">
     <div class="msg msg-bot" style="max-width:90%">
