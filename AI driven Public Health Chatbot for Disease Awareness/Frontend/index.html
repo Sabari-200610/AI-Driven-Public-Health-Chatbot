@@ -10,23 +10,54 @@
   <body>
 
 <!-- NAV -->
-<nav>
-  <a class="nav-brand" href="#">
-    <div class="nav-logo">
-      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+<nav class="navbar">
+
+    <!-- Logo -->
+    <div class="logo">
+
+    <div class="logo-box">
+        <img src="images/logo.png" class="logo-img">
+        <span>HealthBot AI</span>
     </div>
-    <span class="nav-name">HealthBot AI</span>
-  </a>
-  <ul class="nav-links">
-    <li><a href="#features">Features</a></li>
-    <li><a href="#how">How it Works</a></li>
-    <li><a href="#diseases">Diseases</a></li>
-    <li><a href="#about">About</a></li>
-  </ul>
-  <div class="nav-cta" id="navCTA">
-    <a class="btn-outline" href="#" onclick="openModal('login')">Sign In</a>
-    <a class="btn-primary" href="#" onclick="openModal('register')">Get Started</a>
+
 </div>
+
+    <!-- Center Links -->
+    <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#how">How It Works</a>
+        <a href="#diseases">Diseases</a>
+        <a href="#about">About</a>
+    </div>
+
+    <!-- Right Side -->
+    <div class="nav-actions">
+
+        <button id="themeToggle"
+                class="theme-btn"
+                onclick="toggleTheme()"
+                title="Toggle Theme">
+            🌙
+        </button>
+
+        <div id="navCTA" class="nav-cta">
+
+            <a class="btn-outline"
+               href="#"
+               onclick="openModal('login')">
+                Sign In
+            </a>
+
+            <a class="btn-primary"
+               href="#"
+               onclick="openModal('register')">
+                Get Started
+            </a>
+
+        </div>
+
+    </div>
+
 </nav>
 
 <!-- HERO -->
@@ -336,9 +367,7 @@
         ⛶
     </button>
 
-    <button id="themeToggle" onclick="toggleTheme()">
-        🌙
-    </button>
+    
 
     <button class="cp-close" onclick="closeChat()">
         ×

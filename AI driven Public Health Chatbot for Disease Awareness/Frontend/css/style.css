@@ -25,9 +25,31 @@
       background: var(--white); border-bottom: 1px solid var(--border);
       padding: 0 5%; display: flex; align-items: center; justify-content: space-between; height: 64px;
     }
-    .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-    .nav-logo { width: 36px; height: 36px; background: var(--blue); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
-    .nav-logo svg { width: 20px; height: 20px; fill: white; }
+    .nav-brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.logo{
+    width:48px;
+    height:48px;
+
+    background:linear-gradient(135deg,#1d4ed8,#3b82f6);
+
+    border-radius:12px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.logo svg{
+    width:24px;
+    height:24px;
+
+    fill:white;
+}
     .nav-name { font-family: 'Sora', sans-serif; font-size: 1.05rem; color: var(--blue); font-weight: 700; }
     .nav-links { display: flex; gap: 32px; list-style: none; }
     .nav-links a { text-decoration: none; color: var(--gray); font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
@@ -204,7 +226,7 @@
 .chatbot-popup.expanded{
     width:900px;
     height:90vh;
-}
+}   
    .cp-header{
     background:var(--blue);
     padding:14px 16px;
@@ -516,4 +538,70 @@
     right: 20px;
     bottom: 20px;
 }
+.theme-btn{
+    width:45px;
+    height:45px;
 
+    border:none;
+    border-radius:50%;
+
+    background:#ffffff;
+
+    cursor:pointer;
+
+    font-size:20px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    margin-right:15px;
+
+    transition:.3s;
+}
+
+.theme-btn:hover{
+    transform:scale(1.08);
+    background:#f3f4f6;
+}
+.nav-actions{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+.logo{
+    display:flex;
+    align-items:center;
+    gap:24px;
+    margin-left:50px;
+}
+
+.logo{
+    margin-left:85px;
+}
+.logo-box{
+    display:flex;
+    align-items:center;
+    gap:30px;
+
+    background:#3B82F6;
+    border-radius:3px;
+
+    padding:8px 10px;
+}
+
+.logo-img{
+    width:46px;
+    height:46px;
+    object-fit:contain;
+    background:white;
+    border-radius:10px;
+    padding:3px;
+}
+
+.logo-box span{
+    color:white;
+    font-size:20px;
+    font-weight:700;
+    white-space:nowrap;
+}

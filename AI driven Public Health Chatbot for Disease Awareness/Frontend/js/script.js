@@ -178,19 +178,21 @@ function quickAsk(question) {
     sendChat();
 
 }
-function toggleTheme() {
+function toggleTheme(){
 
     document.body.classList.toggle("dark-mode");
 
     const btn = document.getElementById("themeToggle");
 
     if(document.body.classList.contains("dark-mode")){
-        btn.innerHTML = "☀️";
         localStorage.setItem("theme","dark");
-    }else{
-        btn.innerHTML = "🌙";
-        localStorage.setItem("theme","light");
+        if(btn) btn.innerHTML="☀️";
     }
+    else{
+        localStorage.setItem("theme","light");
+        if(btn) btn.innerHTML="🌙";
+    }
+
 }
 
 
@@ -408,3 +410,26 @@ function toggleExpand(){
     }
 
 }
+nav.innerHTML = `
+<button id="themeToggle"
+        class="theme-btn"
+        onclick="toggleTheme()">
+    ${document.body.classList.contains("dark-mode") ? "☀️" : "🌙"}
+</button>
+
+<span style="color:white;font-weight:600;margin-right:15px;">
+👋 ${user.fullname}
+</span>
+
+<a class="btn-outline"
+   href="#"
+   onclick="openModal('login')">
+    Sign In
+</a>
+
+<a class="btn-primary"
+   href="#"
+   onclick="openModal('register')">
+    Get Started
+</a>
+`;
