@@ -577,7 +577,7 @@
 }
 
 .logo{
-    margin-left:85px;
+    margin-left:90px;
 }
 .logo-box{
     display:flex;
@@ -587,7 +587,7 @@
     background:#3B82F6;
     border-radius:3px;
 
-    padding:8px 10px;
+    padding:9px 10px;
 }
 
 .logo-img{
@@ -595,7 +595,7 @@
     height:46px;
     object-fit:contain;
     background:white;
-    border-radius:10px;
+    border-radius:11px;
     padding:3px;
 }
 
