@@ -125,6 +125,47 @@
     addMessage(msgs, "Unable to connect to backend.", false);
 }
 }
+async function askDisease(disease) {
+
+    openChat();
+
+    const msgs = document.getElementById("cpMessages");
+
+    addMessage(msgs, disease, true);
+
+    try {
+
+        const response = await fetch("http://127.0.0.1:5000/chat", {
+
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify({
+                message: disease
+            })
+
+        });
+
+        const data = await response.json();
+
+        addMessage(msgs, data.response, false);
+
+    }
+    catch(err){
+
+        addMessage(msgs,
+            "Unable to connect to backend.",
+            false
+        );
+
+        console.error(err);
+
+    }
+
+}
 
  async function heroSend() {
 
