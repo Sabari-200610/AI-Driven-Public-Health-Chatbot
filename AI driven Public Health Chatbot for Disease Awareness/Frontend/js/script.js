@@ -157,7 +157,7 @@ async function askDisease(disease) {
     catch(err){
 
         addMessage(msgs,
-            "Unable to connect to backend.",
+            "Unable to connect to the backend.",
             false
         );
 
