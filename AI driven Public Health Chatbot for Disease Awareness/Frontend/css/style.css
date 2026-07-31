@@ -605,3 +605,53 @@
     font-weight:700;
     white-space:nowrap;
 }
+#clearChat{
+    width:36px;
+    height:36px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:transparent;
+    color:white;
+
+    border:none;
+    border-radius:50%;
+
+    cursor:pointer;
+    font-size:18px;
+}
+
+#clearChat:hover{
+    background:rgba(255,255,255,.2);
+}
+.history-panel{
+
+    display:none;
+
+    max-height:180px;
+
+    overflow-y:auto;
+
+    border-bottom:1px solid #ddd;
+
+    background:#f8f9fa;
+
+}
+
+.history-item{
+
+    padding:12px;
+
+    cursor:pointer;
+
+    border-bottom:1px solid #eee;
+
+}
+
+.history-item:hover{
+
+    background:#e8f4ff;
+
+}

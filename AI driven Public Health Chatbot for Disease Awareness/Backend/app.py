@@ -292,21 +292,29 @@ User Question:
 # Get Chat History
 # ==========================
 
-@app.route("/history/<email>", methods=["GET"])
-def history(email):
+
+
+
+# ==========================
+# Run Server    
+# ==========================
+@app.route("/history", methods=["POST"])
+def history():
+
+    data = request.get_json()
+
+    email = data["email"]
 
     conn = sqlite3.connect("users.db")
     cursor = conn.cursor()
 
-    cursor.execute(
-        """
-        SELECT id,user_message,bot_response,created_at
+    cursor.execute("""
+        SELECT user_message, created_at
         FROM chat_history
-        WHERE email=?
+        WHERE email = ?
         ORDER BY created_at DESC
-        """,
-        (email,)
-    )
+        LIMIT 20
+    """, (email,))
 
     rows = cursor.fetchall()
 
@@ -315,22 +323,15 @@ def history(email):
     history = []
 
     for row in rows:
-
         history.append({
-
-            "id": row[0],
-            "user_message": row[1],
-            "bot_response": row[2],
-            "created_at": row[3]
-
+            "message": row[0],
+            "time": row[1]
         })
 
-    return jsonify(history)
-
-
-# ==========================
-# Run Server
-# ==========================
+    return jsonify({
+        "success": True,
+        "history": history
+    })
 
 if __name__ == "__main__":
     app.run(debug=True)

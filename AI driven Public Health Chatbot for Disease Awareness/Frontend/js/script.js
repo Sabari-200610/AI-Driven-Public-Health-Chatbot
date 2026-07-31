@@ -58,17 +58,30 @@
   }
 
   function addMessage(container, text, isUser) {
+
     const div = document.createElement("div");
     div.className = "msg " + (isUser ? "msg-user" : "msg-bot");
+    div.style.maxWidth = "90%";
 
-    if (isUser) {
-        div.textContent = text;
-    } else {
+    // Markdown rendering if you use marked.js
+    if (!isUser && window.marked) {
         div.innerHTML = marked.parse(text);
+    } else {
+        div.textContent = text;
     }
 
     container.appendChild(div);
     container.scrollTop = container.scrollHeight;
+
+    // Save message
+    let history = JSON.parse(localStorage.getItem("chatHistory")) || [];
+
+    history.push({
+        text: text,
+        user: isUser
+    });
+
+    localStorage.setItem("chatHistory", JSON.stringify(history));
 }
 
  async function sendChat() {
@@ -193,9 +206,12 @@ async function askDisease(disease) {
                 "Content-Type": "application/json"
             },
 
-            body: JSON.stringify({
-                message: text
-            })
+             
+
+body: JSON.stringify({
+    message: text,
+    email: user.email
+})
 
         });
 
@@ -246,18 +262,7 @@ window.onload = function(){
     }
 
 }
-window.onload = function(){
 
-    if(localStorage.getItem("theme") === "dark"){
-        document.body.classList.add("dark-mode");
-
-        const btn = document.getElementById("themeToggle");
-        if(btn){
-            btn.innerHTML = "☀️";
-        }
-    }
-
-}
 async function registerUser(){
 
     const fullname = document.getElementById("regName").value;
@@ -310,6 +315,7 @@ async function registerUser(){
 
 }
 async function loginUser() {
+    console.log("Login button clicked");
 
     const email = document.getElementById("loginEmail").value;
     const password = document.getElementById("loginPassword").value;
@@ -474,3 +480,99 @@ nav.innerHTML = `
     Get Started
 </a>
 `;
+window.onload = function(){
+
+    const msgs = document.getElementById("cpMessages");
+
+    let history = JSON.parse(localStorage.getItem("chatHistory")) || [];
+
+    history.forEach(msg => {
+
+        const div = document.createElement("div");
+
+        div.className = "msg " + (msg.user ? "msg-user" : "msg-bot");
+        div.style.maxWidth = "90%";
+
+        if(!msg.user && window.marked){
+            div.innerHTML = marked.parse(msg.text);
+        }
+        else{
+            div.textContent = msg.text;
+        }
+
+        msgs.appendChild(div);
+
+    });
+
+    msgs.scrollTop = msgs.scrollHeight;
+
+}
+function clearChat(){
+
+    if(!confirm("Clear this conversation?")){
+        return;
+    }
+
+    localStorage.removeItem("chatHistory");
+
+    document.getElementById("cpMessages").innerHTML = `
+        <div class="msg msg-bot" style="max-width:90%">
+            Hi! 👋 I'm HealthBot AI. Ask me anything about diseases, symptoms, or prevention.
+        </div>
+    `;
+
+}   
+async function loadHistory(){
+
+    const panel = document.getElementById("historyPanel");
+
+    panel.style.display = "block";
+    panel.innerHTML = "Loading...";
+
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    try{
+
+        const response = await fetch("http://127.0.0.1:5000/history",{
+
+            method:"POST",
+
+            headers:{
+                "Content-Type":"application/json"
+            },
+
+            body:JSON.stringify({
+                email:user.email
+            })
+
+        });
+
+        const data = await response.json();
+
+        panel.innerHTML = "";
+
+        data.history.forEach(chat=>{
+
+            panel.innerHTML += `
+                <div class="history-item"
+                     onclick="quickAsk('${chat.message.replace(/'/g,"\\'")}')">
+
+                    <strong>${chat.message}</strong><br>
+
+                    <small>${chat.time}</small>
+
+                </div>
+            `;
+
+        });
+
+    }
+    catch(err){
+
+        console.error(err);
+
+        panel.innerHTML = "Unable to load history.";
+
+    }
+
+}

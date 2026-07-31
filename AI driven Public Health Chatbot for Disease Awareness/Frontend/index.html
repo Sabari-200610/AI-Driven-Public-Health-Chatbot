@@ -413,6 +413,14 @@
         <h3>HealthBot AI</h3>
 
         <div class="header-buttons">
+          <button id="historyBtn"
+        onclick="loadHistory()"
+        title="History">
+    🕘
+</button> 
+          <button onclick="clearChat()">
+🗑 Clear Chat
+</button>
 
     <button id="expandChat"
             onclick="toggleExpand()"
@@ -430,6 +438,7 @@
 </div>
     
  <div class="cp-messages" id="cpMessages">
+  <div id="historyPanel" class="history-panel"></div>
     <div class="msg msg-bot" style="max-width:90%">
         Hi! 👋 I'm HealthBot AI. Ask me anything about diseases, symptoms, or prevention.
     </div>
