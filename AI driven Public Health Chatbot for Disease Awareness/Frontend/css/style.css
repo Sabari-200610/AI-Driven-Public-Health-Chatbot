@@ -33,7 +33,7 @@
 
 .logo{
     width:48px;
-    height:48px;
+    height:47px;
 
     background:linear-gradient(135deg,#1d4ed8,#3b82f6);
 
@@ -45,7 +45,7 @@
 }
 
 .logo svg{
-    width:24px;
+    width:23px;
     height:24px;
 
     fill:white;
@@ -299,7 +299,7 @@
     display:flex;
     gap:10px;
 
-    padding:12px;
+    padding:111px;
 
     border-top:1px solid var(--border);
 
